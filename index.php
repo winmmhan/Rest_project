@@ -27,7 +27,8 @@ while($startTime >= $endTime ){
 
     $timeArray = array();    
         
-    $sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency') VALUES ('','".$startTime."','".$cpuload."','".$concurrency."')";
+    $sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency')"; 
+    $sql .= "VALUES ('','".$startTime."','".$cpuload."','".$concurrency."')";
         
     $database->query($sql);
      
