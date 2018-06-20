@@ -48,7 +48,7 @@ function insertData(){
         	$sql .= "('', '".$timestamp."', '".$cupload."', '".$con."'); "; 
     } 
     
-    $database->multi_query($sql);      
+    $database->query($sql);      
 }
 
 //var_dump($myArray);
