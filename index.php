@@ -37,7 +37,6 @@ while($startTime >= $endTime ){
 insertData();
 
 function insertData(){
-	$sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency') VALUES "; 
     	foreach($timeArray as $arr){
 
          	//   echo $arr['timestamp'] .' ' . $arr['cpuload']. ' '. $arr['concurrency'] ."<br/><br/>"; 
