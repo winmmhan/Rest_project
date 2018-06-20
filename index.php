@@ -15,25 +15,41 @@ echo '<br/>' . $endTime;
 //$edTime = new DateTime("@$endTime");
 //echo '<br/>' . $edTime->format('Y-m-d H:i:s') . '<br/>';
 
-
+$timeArray = array();
 while($startTime >= $endTime ){
     
 //    echo '<br/>' .$startTime . ' ' ;
 //     $stTime = new DateTime("@$startTime");   
 //     echo  ' '.  $stTime->format('Y-m-d H:i:s') . '<br/>';
     
-    $cpuload = getRandFloat(0,100);
-    $concurrency=rand(0,500000);
+	    $cpuload =round(getRandFloat(0,100));
+	    $concurrency=rand(0,500000);
 
-    $timeArray = array();    
-        
-    $sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency')"; 
-    $sql .= "VALUES ('','".$startTime."','".$cpuload."','".$concurrency."')";
-        
-    $database->query($sql);
-     
-    $startTime = $startTime - 1;
+	    $timeArray[]  = array(
+		"timestamp"=>$startTime,
+		"cpuload"=>$cpuload,
+		"concurrency"=>$concurrency,       
+	    ); 
+	
+	 $startTime = $startTime - 1;
+}       
+
+insertData();
+
+function insertData(){
+	$sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency') VALUES "; 
+    	foreach($timeArray as $arr){
+
+         	//   echo $arr['timestamp'] .' ' . $arr['cpuload']. ' '. $arr['concurrency'] ."<br/><br/>"; 
+		$timestamp = $arr['timestamp'];
+		$cupload = $arr['cupload'];
+		$con = $arr['concurrency'];
+
+		$sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency') VALUES "; 
+        	$sql .= "('', '".$timestamp."', '".$cupload."', '".$con."'); "; 
+    } 
     
+    $database->multi_query($sql);      
 }
 
 //var_dump($myArray);
