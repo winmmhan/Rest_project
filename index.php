@@ -26,7 +26,7 @@ while($startTime >= $endTime ){
 	    $concurrency=rand(0,500000);
 
 	    $timeArray[]  = array(
-		"timeStamp"=>$startTime,
+		"timestamp"=>$startTime,
 		"cpuLoad"=>$cpuload,
 		"concurrency"=>$concurrency,       
 	    ); 
@@ -40,7 +40,7 @@ function insertData(){
     	foreach($timeArray as $arr){
 
          	//   echo $arr['timestamp'] .' ' . $arr['cpuload']. ' '. $arr['concurrency'] ."<br/><br/>"; 
-		$timestamp = $arr['timeStamp'];
+		$timestamp = $arr['timestamp'];
 		$cpuload = $arr['cpuLoad'];
 		$con = $arr['concurrency'];
 
