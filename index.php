@@ -41,11 +41,11 @@ function insertData(){
 
          	//   echo $arr['timestamp'] .' ' . $arr['cpuload']. ' '. $arr['concurrency'] ."<br/><br/>"; 
 		$timestamp = $arr['timestamp'];
-		$cupload = $arr['cupload'];
+		$cpuload = $arr['cpuload'];
 		$con = $arr['concurrency'];
 
-		$sql = "INSERT INTO datapoints ('id', 'timestamp', 'cpu_load', 'concurrency') VALUES "; 
-        	$sql .= "('', '".$timestamp."', '".$cupload."', '".$con."'); "; 
+		$sql = "INSERT INTO datapoints (id, timestamp, cpu_load, concurrency) VALUES "; 
+        	$sql .= "('', '".$timestamp."', '".$cpuload."', '".$con."'); "; 
     } 
     
     $database->query($sql);      
