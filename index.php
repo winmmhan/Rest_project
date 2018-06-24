@@ -26,8 +26,8 @@ while($startTime >= $endTime ){
 	    $concurrency=rand(0,500000);
 
 	    $timeArray[]  = array(
-		"timestamp"=>$startTime,
-		"cpuload"=>$cpuload,
+		"timeStamp"=>$startTime,
+		"cpuLoad"=>$cpuload,
 		"concurrency"=>$concurrency,       
 	    ); 
 	
@@ -40,15 +40,15 @@ function insertData(){
     	foreach($timeArray as $arr){
 
          	//   echo $arr['timestamp'] .' ' . $arr['cpuload']. ' '. $arr['concurrency'] ."<br/><br/>"; 
-		$timestamp = $arr['timestamp'];
-		$cpuload = $arr['cpuload'];
+		$timestamp = $arr['timeStamp'];
+		$cpuload = $arr['cpuLoad'];
 		$con = $arr['concurrency'];
 
 		$sql = "INSERT INTO datapoints (id, timestamp, cpu_load, concurrency) VALUES "; 
-        	$sql .= "('', '".$timestamp."', '".$cpuload."', '".$con."'); "; 
-    } 
-    
-    $database->query($sql);      
+        	$sql .= "('', '".$timestamp."', '".$cpuload."', '".$con."')"; 
+		
+		$database->query($sql);
+    }         
 }
 
 //var_dump($myArray);
